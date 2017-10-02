@@ -227,8 +227,9 @@ void MP1Node::checkMessages() {
 
 
 void MP1Node::get_id_port(Address * addr, int &id, short &port){
-    memcpy(&id, &addr[0], sizeof(int));
-    memcpy(&port, &addr[4], sizeof(short));
+    
+    memcpy(&id, &addr->addr[0], sizeof(int));
+    memcpy(&port, &addr->addr[4], sizeof(short));
 }
 
 void MP1Node::acknowledge_join_response(Message * msg, Address & addr){
@@ -239,7 +240,14 @@ void MP1Node::acknowledge_join_response(Message * msg, Address & addr){
     size_t counts = msg->hdr.memberCount;
     
     for(int i = 0; i < counts; i++){
-        memberNode->memberList.push_back(msg->members[i]);
+        
+        if(Address(to_string(msg->members[i].getid()) + ":" + to_string(msg->members[i].getport())) == myAddress()){
+            continue;
+        }
+        else{
+            memberNode->memberList.push_back(msg->members[i]);
+        }
+        
     }
     log->LOG(&memberNode->addr, " has joined the group");
     std::cout << myAddress().getAddress() << " has joined the group" << std::endl;
@@ -249,11 +257,12 @@ Address & MP1Node::myAddress(){
     return memberNode->addr;
 }
 
-size_t bytesCount(Message *messageStruct) {
-    return sizeof(messageStruct->hdr) + messageStruct->hdr.memberCount * sizeof(messageStruct->members);
-}
 
 void MP1Node::replyToJoin(Address &from) {
+    
+    if(!memberNode->inGroup){
+        memberNode->inGroup = true;
+    }
     size_t membersCount = memberNode->memberList.size();
     
     Message *replyMsg = new Message(membersCount);
@@ -274,6 +283,15 @@ void MP1Node::replyToJoin(Address &from) {
     
 }
 
+void MP1Node::add_to_my_membership_list(Address & addr){
+    int id = 0;
+    short port = 0;
+    get_id_port(&addr, id, port);
+    MemberListEntry mle = MemberListEntry(id, port, 0, 0);
+    
+    memberNode->memberList.push_back(mle);
+}
+
 bool MP1Node::recvCallBack(void *env, char *data, int size ) {
 	/*
 	 * Your code goes here
@@ -285,6 +303,7 @@ bool MP1Node::recvCallBack(void *env, char *data, int size ) {
     
     if(msgType == JOINREQ){
         
+        add_to_my_membership_list(from);
         replyToJoin(from);
 
         
@@ -308,14 +327,47 @@ bool MP1Node::recvCallBack(void *env, char *data, int size ) {
  * 				the nodes
  * 				Propagate your membership list
  */
+
+int randomize(int i ){
+    srand (time(NULL));
+    return std::rand() % i;
+}
+
+vector <MemberListEntry> MP1Node::get_gossip_targets(){
+        vector<MemberListEntry>::const_iterator first = memberNode->memberList.begin() + 1;
+    vector<MemberListEntry>::const_iterator last = memberNode->memberList.end();
+    vector<MemberListEntry> candidates(first, last);
+    
+    
+    if(memberNode->memberList.empty()){
+        return candidates;
+    }
+    
+    
+    std::random_shuffle(candidates.begin(), candidates.end(), randomize);
+    std::cout << "I am: " << memberNode->addr.getAddress() << std::endl;
+    
+    for(int i = 0; i < gossip_beta; i++){
+        if (i == candidates.size()){
+            break;
+        }
+        std::cout << "candidate: " << candidates[i].getid() << std::endl;
+        
+    }
+    
+    return candidates;
+}
+
 void MP1Node::nodeLoopOps() {
 
 	/*
 	 * Your code goes here
 	 */
-
+    get_gossip_targets();
     return;
 }
+
+
 
 /**
  * FUNCTION NAME: isNullAddress
@@ -358,6 +410,7 @@ void MP1Node::initMemberListTable(Member *memberNode) {
     e.port = port;
     e.heartbeat= this->localTimeStamp;
     e.timestamp = this->localTimeStamp;
+    memberNode->memberList.reserve(100);
     memberNode->memberList.push_back(e);
 }
 

@@ -14,7 +14,9 @@
 #include "Member.h"
 #include "EmulNet.h"
 #include "Queue.h"
-
+#include <stdlib.h>
+#include <time.h> 
+#include <algorithm>
 /**
  * Macros
  */
@@ -82,9 +84,12 @@ public:
 	Member * getMemberNode() {
 		return memberNode;
 	}
+    int gossip_beta = 3;
     long localTimeStamp = 0;
 	int recvLoop();
     Address & myAddress();
+    vector <MemberListEntry> get_gossip_targets();
+    void add_to_my_membership_list(Address & addr);
     void recordMembers(Message *incomingMsg, Address &from);
     void get_id_port(Address * addr, int &id, short &port);
     void acknowledge_join_response(Message * msg, Address & addr);
