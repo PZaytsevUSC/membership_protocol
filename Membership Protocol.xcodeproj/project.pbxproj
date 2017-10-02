@@ -7,7 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9C1C31E91F6B119C0015E606 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9C1C31E81F6B119C0015E606 /* main.cpp */; };
+		9C1C31F91F6B11F10015E606 /* Application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9C1C31EF1F6B11F10015E606 /* Application.cpp */; };
+		9C1C31FA1F6B11F10015E606 /* EmulNet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9C1C31F11F6B11F10015E606 /* EmulNet.cpp */; };
+		9C1C31FB1F6B11F10015E606 /* Log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9C1C31F41F6B11F10015E606 /* Log.cpp */; };
+		9C1C31FC1F6B11F10015E606 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 9C1C31F61F6B11F10015E606 /* Makefile */; };
+		9C1C31FD1F6B11F10015E606 /* Member.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9C1C31F71F6B11F10015E606 /* Member.cpp */; };
+		9C1C32061F6B12080015E606 /* MP1Node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9C1C31FE1F6B12080015E606 /* MP1Node.cpp */; };
+		9C1C32071F6B12080015E606 /* Params.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9C1C32001F6B12080015E606 /* Params.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,7 +30,25 @@
 
 /* Begin PBXFileReference section */
 		9C1C31E51F6B119C0015E606 /* Membership Protocol */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Membership Protocol"; sourceTree = BUILT_PRODUCTS_DIR; };
-		9C1C31E81F6B119C0015E606 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		9C1C31EF1F6B11F10015E606 /* Application.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Application.cpp; sourceTree = SOURCE_ROOT; };
+		9C1C31F01F6B11F10015E606 /* Application.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Application.h; sourceTree = SOURCE_ROOT; };
+		9C1C31F11F6B11F10015E606 /* EmulNet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EmulNet.cpp; sourceTree = SOURCE_ROOT; };
+		9C1C31F21F6B11F10015E606 /* EmulNet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmulNet.h; sourceTree = SOURCE_ROOT; };
+		9C1C31F31F6B11F10015E606 /* Grader.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = Grader.sh; sourceTree = SOURCE_ROOT; };
+		9C1C31F41F6B11F10015E606 /* Log.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Log.cpp; sourceTree = SOURCE_ROOT; };
+		9C1C31F51F6B11F10015E606 /* Log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Log.h; sourceTree = SOURCE_ROOT; };
+		9C1C31F61F6B11F10015E606 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = SOURCE_ROOT; };
+		9C1C31F71F6B11F10015E606 /* Member.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Member.cpp; sourceTree = SOURCE_ROOT; };
+		9C1C31F81F6B11F10015E606 /* Member.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Member.h; sourceTree = SOURCE_ROOT; };
+		9C1C31FE1F6B12080015E606 /* MP1Node.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MP1Node.cpp; sourceTree = SOURCE_ROOT; };
+		9C1C31FF1F6B12080015E606 /* MP1Node.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MP1Node.h; sourceTree = SOURCE_ROOT; };
+		9C1C32001F6B12080015E606 /* Params.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Params.cpp; sourceTree = SOURCE_ROOT; };
+		9C1C32011F6B12080015E606 /* Params.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Params.h; sourceTree = SOURCE_ROOT; };
+		9C1C32021F6B12080015E606 /* Queue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Queue.h; sourceTree = SOURCE_ROOT; };
+		9C1C32031F6B12080015E606 /* run.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = run.sh; sourceTree = SOURCE_ROOT; };
+		9C1C32041F6B12080015E606 /* stdincludes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stdincludes.h; sourceTree = SOURCE_ROOT; };
+		9C1C32051F6B12080015E606 /* submit.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = submit.py; sourceTree = SOURCE_ROOT; };
+		9C1C320B1F6B27820015E606 /* testcases */ = {isa = PBXFileReference; lastKnownFileType = folder; name = testcases; path = ../../testcases; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +81,25 @@
 		9C1C31E71F6B119C0015E606 /* Membership Protocol */ = {
 			isa = PBXGroup;
 			children = (
-				9C1C31E81F6B119C0015E606 /* main.cpp */,
+				9C1C320B1F6B27820015E606 /* testcases */,
+				9C1C31FE1F6B12080015E606 /* MP1Node.cpp */,
+				9C1C31FF1F6B12080015E606 /* MP1Node.h */,
+				9C1C32001F6B12080015E606 /* Params.cpp */,
+				9C1C32011F6B12080015E606 /* Params.h */,
+				9C1C32021F6B12080015E606 /* Queue.h */,
+				9C1C32031F6B12080015E606 /* run.sh */,
+				9C1C32041F6B12080015E606 /* stdincludes.h */,
+				9C1C32051F6B12080015E606 /* submit.py */,
+				9C1C31EF1F6B11F10015E606 /* Application.cpp */,
+				9C1C31F01F6B11F10015E606 /* Application.h */,
+				9C1C31F11F6B11F10015E606 /* EmulNet.cpp */,
+				9C1C31F21F6B11F10015E606 /* EmulNet.h */,
+				9C1C31F31F6B11F10015E606 /* Grader.sh */,
+				9C1C31F41F6B11F10015E606 /* Log.cpp */,
+				9C1C31F51F6B11F10015E606 /* Log.h */,
+				9C1C31F61F6B11F10015E606 /* Makefile */,
+				9C1C31F71F6B11F10015E606 /* Member.cpp */,
+				9C1C31F81F6B11F10015E606 /* Member.h */,
 			);
 			path = "Membership Protocol";
 			sourceTree = "<group>";
@@ -119,7 +161,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9C1C31E91F6B119C0015E606 /* main.cpp in Sources */,
+				9C1C31FB1F6B11F10015E606 /* Log.cpp in Sources */,
+				9C1C32071F6B12080015E606 /* Params.cpp in Sources */,
+				9C1C31FA1F6B11F10015E606 /* EmulNet.cpp in Sources */,
+				9C1C32061F6B12080015E606 /* MP1Node.cpp in Sources */,
+				9C1C31FC1F6B11F10015E606 /* Makefile in Sources */,
+				9C1C31F91F6B11F10015E606 /* Application.cpp in Sources */,
+				9C1C31FD1F6B11F10015E606 /* Member.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
