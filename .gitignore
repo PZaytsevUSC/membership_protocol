@@ -2,4 +2,6 @@
 *.o
 *.sh
 *.log
-
+submit.py
+/'Membership Protocol'
+*.xcodeproj
